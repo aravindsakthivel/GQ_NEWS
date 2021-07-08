@@ -5,9 +5,9 @@ const { Query } = require("./graphql/resolvers/query");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const dotenv = require("dotenv");
+require("dotenv").config();
+const { Mutation } = require("./graphql/resolvers/mutation");
 
-dotenv.config();
 const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGO_URI;
 
@@ -37,6 +37,7 @@ const server = new ApolloServer({
   typeDefs,
   resolvers: {
     Query,
+    Mutation,
   },
 });
 
